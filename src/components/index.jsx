@@ -6,3 +6,5 @@ export * from './ContactList/ContactList';
 export * from './ContactForm/ContactForm';
 export * from './ContactListItem/ContactListItem';
 export * from './ContactsContainer/ContactsContainer';
+export * from './NoSavedContacts/NoSavedContacts';
+export * from './NoFilteredContacts/NoFilteredContacts';

@@ -7,6 +7,8 @@ import {
     Filter,
     ContactList,
     ContactsContainer,
+    NoSavedContacts,
+    NoFilteredContacts,
 } from 'components';
 
 export class App extends Component {
@@ -66,7 +68,7 @@ export class App extends Component {
     };
 
     render() {
-        const { filter, isOpenForm } = this.state;
+        const { contacts, filter, isOpenForm } = this.state;
 
         return (
             <>
@@ -76,11 +78,23 @@ export class App extends Component {
 
                     <ContactsContainer>
                         <ContactsTitle />
-                        <Filter value={filter} onChange={this.onFilterChange} />
-                        <ContactList
-                            contacts={this.filteredContacts()}
-                            removeContact={this.removeContact}
-                        />
+                        {contacts.length > 0 && (
+                            <Filter
+                                value={filter}
+                                onChange={this.onFilterChange}
+                            />
+                        )}
+                        {!contacts.length && <NoSavedContacts />}
+                        {contacts.length > 0 &&
+                            !this.filteredContacts().length && (
+                                <NoFilteredContacts />
+                            )}
+                        {this.filteredContacts().length > 0 && (
+                            <ContactList
+                                contacts={this.filteredContacts()}
+                                removeContact={this.removeContact}
+                            />
+                        )}
                     </ContactsContainer>
                 </Container>
             </>
