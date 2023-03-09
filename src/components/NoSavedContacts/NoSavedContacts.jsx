@@ -3,7 +3,7 @@ import { NoSavedContactsMsg } from './NoSavedContacts.styled';
 export const NoSavedContacts = () => {
     return (
         <NoSavedContactsMsg>
-            You have no contacts saved in your phonebook
+            You don't have any saved contacts in your phonebook
         </NoSavedContactsMsg>
     );
 };

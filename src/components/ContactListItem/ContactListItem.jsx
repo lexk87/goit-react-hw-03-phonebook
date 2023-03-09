@@ -11,7 +11,7 @@ import {
 
 export const ContactListItem = ({ id, name, number, removeContact }) => {
     return (
-        <Item key={id}>
+        <Item>
             <IconWrapper>
                 <ContactIcon />
                 <RemoveContactBtn

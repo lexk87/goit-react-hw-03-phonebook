@@ -10,6 +10,9 @@ import {
     NoSavedContacts,
     NoFilteredContacts,
 } from 'components';
+import { dataStorage } from 'services/dataStorage';
+
+const LOCALSTORAGE_KEY = 'Contacts';
 
 export class App extends Component {
     state = {
@@ -22,6 +25,18 @@ export class App extends Component {
         filter: '',
         isOpenForm: false,
     };
+
+    componentDidMount() {
+        const savedContacts = dataStorage.getData(LOCALSTORAGE_KEY);
+
+        savedContacts && this.setState({ contacts: savedContacts });
+    }
+
+    componentDidUpdate(prevState) {
+        if (prevState.contacts !== this.state.contacts) {
+            dataStorage.setData(LOCALSTORAGE_KEY, this.state.contacts);
+        }
+    }
 
     toggle = () => {
         this.setState(prevState => ({

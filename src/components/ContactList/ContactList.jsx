@@ -8,6 +8,7 @@ export const ContactList = ({ contacts, removeContact }) => {
             <PhonebookList>
                 {contacts.map(({ id, name, number }) => (
                     <ContactListItem
+                        key={id}
                         id={id}
                         name={name}
                         number={number}
